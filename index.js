@@ -8,7 +8,7 @@ let fileString = "";
 
 const url = "https://en.wikipedia.org/wiki/Road_safety_in_Europe#:~:text=In%20the%20year%202000%20over,road%20collisions%20was%20135%2C000%20people."
 
-const data = axios(url).then((response) => {
+axios(url).then((response) => {
     const data = response.data;
     let result = []
     const $ = cheerio.load(data);
@@ -30,7 +30,6 @@ const data = axios(url).then((response) => {
 
     })
     result.sort((a, b) => a.roadDeathPerMillIhabitants <= b.roadDeathPerMillIhabitants ? 1 : -1)
-    console.log(result)
 
     result.forEach((record) => {
         if (!fileString) {
